@@ -11,6 +11,9 @@
       <source id="ogv" src="http://media.w3.org/2010/05/sintel/trailer.ogv" type="video/ogg"> 
       <p>Your user agent does not support the HTML5 Video element.</p> 
 </video> 
+<canvas id="Mycanvas">
+
+</canvas>
 <!-- 必须加在微信api资源 --> 
 <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script> 
 <script> 
@@ -23,6 +26,55 @@
         document.getElementById('video').play(); 
     }, false); 
 </script> 
+
+<script type="text/javascript">
+	
+        !(function(doc) {
+
+            var Mycanvas = doc.getElementById("Mycanvas"),
+                cont = Mycanvas.getContext("2d"),
+                Myvideo = doc.getElementById("video");
+            cw = window.innerWidth;
+            ch = window.innerHeight;
+            Mycanvas.width = cw;
+            Mycanvas.height = ch;
+            Myvideo.addEventListener("canplay", function() {
+                var cont2 = cerateCanvas(cw, ch).getContext("2d");
+                draw(this, cont, cont2, cw, ch);
+            }, false)
+
+            function cerateCanvas(w, h) {
+                var cr = doc.createElement("canvas");
+                cr.width = w;
+                cr.height = h;
+                return cr;
+            }
+            function draw(v, c, c2, w, h) {
+                if(v.paused || v.ended) {
+                    cancelAnimationFrame(stop);
+                    return false;
+                }
+                c2.drawImage(v, 0, 0, w, h);
+                var idata = c2.getImageData(0, 0, w, h),
+                    data = idata.data;
+                for(var i = 0; i < data.length; i += 4) {
+                    var r = data[i],
+                        g = data[i + 1],
+                        b = data[i + 2];
+                    brightness = (3 * r + 4 * g + b) >>> 3;
+                    data[i] = brightness;
+                    data[i + 1] = brightness;
+                    data[i + 2] = brightness;
+                };
+                idata.data = data;
+                c.putImageData(idata, 0, 0);
+                var stop = requestAnimationFrame(function() {
+                    draw(v, c, c2, w, h);
+                });
+            }
+        })(document)
+	
+</script>
 
 </body>
 </html>
