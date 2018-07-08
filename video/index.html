@@ -4,8 +4,8 @@
 	<title>微信内部视频测试</title>
 </head>
 <body>
-<audio preload="preload" controls id="car_audio" src="http://media.xitaoinfo.com/ei_zamenjiehunba.mp3" loop></audio> 
-<video id="video" controls="" preload="none" mediagroup="myVideoGroup" poster="http://media.w3.org/2010/05/sintel/poster.png"> 
+<!-- <audio preload="preload" controls id="car_audio" src="http://media.xitaoinfo.com/ei_zamenjiehunba.mp3" loop></audio>  -->
+<video id="video" autoplay x5-video-player-type="h5" controls="" preload="none" mediagroup="myVideoGroup" poster="http://media.w3.org/2010/05/sintel/poster.png"> 
       <source id="mp4" src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4"> 
       <source id="webm" src="http://media.w3.org/2010/05/sintel/trailer.webm" type="video/webm"> 
       <source id="ogv" src="http://media.w3.org/2010/05/sintel/trailer.ogv" type="video/ogg"> 
@@ -15,10 +15,10 @@
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script> 
 <script> 
      //一般情况下，这样就可以自动播放了，但是一些奇葩iPhone机不可以 
-     document.getElementById('car_audio').play(); 
+     // document.getElementById('car_audio').play(); 
     //必须在微信Weixin JSAPI的WeixinJSBridgeReady才能生效 
     document.addEventListener("WeixinJSBridgeReady", function () { 
-        document.getElementById('car_audio').play(); 
+        // document.getElementById('car_audio').play(); 
         document.getElementById('video').play(); 
     }, false); 
 </script> 
