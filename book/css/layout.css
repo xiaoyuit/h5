@@ -1,0 +1,64 @@
+.pages{
+	display: block;
+	width: 930px;
+	height: 598px;
+	margin: 0 auto;
+	padding: 0;
+	position: relative;
+}
+.page{
+	position: absolute;
+    top: 0;
+}
+.page:nth-child(1){
+	transform: translateZ(1px);
+}
+
+.page-1-back,
+.page-2-back {
+    transform: scale(-1, 1);
+}
+
+.paper {
+	width: 465px;
+	height: 598px;
+    display: none;
+    position: absolute;
+    /* 默认放在右边 */
+    right: 0;
+}
+.paper[data-left],
+.paper[data-right] {
+    display: block;
+    z-index: 1;
+}
+.paper[data-left] {
+    right: auto;
+    left: 0;
+}
+/* 把相邻的paper显示出来 */
+.paper[data-right] + .paper {
+    display: block;
+}
+
+.paper {
+    transform-style: preserve-3d;
+}
+.page-1,
+.page-2 {
+    transform: translateZ(2px);
+}
+
+@keyframes flip-to-left {
+    from {
+        transform: perspective(1000px) rotateY(0);
+    }
+    to {
+        transform: perspective(1000px) rotateY(-180deg);
+    }
+}
+
+.paper[data-right] {
+    transform-origin: left center;
+    animation: flip-to-left 2s ease-in-out forwards;
+}

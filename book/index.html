@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/layout.css">
+</head>
+<body>
+<ul class="pages">
+    <!--一个li.paper包含了正反两页-->
+    <li class="paper" data-left>
+        <!--一个.page就是一页内容-->
+        <div class="page page-1-back">
+            <img src="images/1.jpg" alt>
+        </div>
+        <div class="page page-1">
+            <img src="images/2.jpg" alt>
+        </div>
+    </li>
+    <li class="paper" data-right>
+        <div class="page page-2">
+            <img src="images/3.jpg" alt>
+        </div>
+        <div class="page page-2-back">
+            <img src="images/4.jpg" alt>
+        </div>
+    </li>
+    <li class="paper">
+        <div class="page">
+            <img src="images/3.jpg" alt>
+        </div>
+        <div class="page">
+            <img src="images/4.jpg" alt>
+        </div>
+    </li>
+    <!--其它页内容省略-->
+</ul>
+<div class="btn">
+	<a href="javascript:void(0);" class="prev">上一页</a>
+	<a href="javascript:void(0);" class="next">下一页</a>
+</div>
+<!-- <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script> -->
+<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
