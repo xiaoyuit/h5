@@ -86,34 +86,51 @@
         <div>
             <span>摄像头</span>
             <a href="javascript:void(0)" class="up-file">
-               <input type="file" accept="image/*" capture="camera">拍照
+               <input type="file" onchange="videoChange();" accept="image/*" capture="camera">拍照
             </a>
         </div>
         <div>
             <span>前置摄像头</span>
             <a href="javascript:void(0)" class="up-file">
-               <input type="file" accept="image/*" capture="user">拍照
+               <input type="file" onchange="videoChange();" accept="image/*" capture="user">拍照
             </a>
         </div>
         <div>
             <span>录像机</span>
             <a href="javascript:void(0)" class="up-file">
-               <input type="file" accept="image/*" capture="camcorder">录像
+               <input type="file" onchange="videoChange();" accept="video/*" capture="camcorder">录像
             </a>
         </div>
         <div>
             <span>录音机</span>
             <a href="javascript:void(0)" class="up-file">
-               <input type="file" accept="image/*" capture="microphone">录音
+               <input type="file" onchange="videoChange();" accept="audio/*" capture="microphone">录音
             </a>
         </div>
         <div>
             <span>多媒体</span>
             <a href="javascript:void(0)" class="up-file">
-               <input type="file" accept="image/*" multiple>多媒体
+               <input type="file" onchange="videoChange();" accept="image/*" multiple>多媒体
             </a>
+        </div>
+        <div id="info">
+            
+        </div>
+        <div id="src">
+            
         </div>
         
     </form>
+<script type="text/javascript">
+function videoChange() {
+    var node = event.target;
+    var file = node.files[0];
+    var fileSize = (Math.round(file.size / 1024)).toFixed();
+    document.getElementById('info').innerHTML += "所录文件大小约为：" + (fileSize / 1024).toFixed(2) + "Mb";
+    var url = URL.createObjectURL(file);
+    console.log(url);
+    document.getElementById("src").innerHTML = url;
+}
+</script>
 </body>
 </html>
