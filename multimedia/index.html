@@ -29,40 +29,90 @@
             align-items: center;
             background-color: #dbdbdb;
         }
-        label{
-            display: block;
+        div{
             padding: 20px;
             text-align: left;
         }
-        label span{
+        div span{
             display: block;
             font-weight: bold;
+        }
+
+        .up-file {
+            width: 240px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 4px;
+            position: relative;
+            box-sizing: content-box;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            background: #44bbff;
+            color: #FFF;
+            border: 1px solid #ddd;
+            overflow: hidden;
+            display: inline-block;
+            *display: inline;
+            *zoom: 1;
+            transition: all .5s;
+            -webkit-transition: all .5s;
+        }
+
+        .up-file:hover{
+            color: #eee;
+            background: #22acfb;
+            border-color: #ccc;
+            text-decoration: none
+        }
+
+        .up-file input {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            cursor: pointer;
         }
 
     </style>
 </head>
 <body>
     <form>
-        <label>
+        <div>
             <span>摄像头</span>
-            <input type="file" accept="image/*" capture="camera">
-        </label>
-        <label>
+            <a href="javascript:void(0)" class="up-file">
+               <input type="file" accept="image/*" capture="camera">拍照
+            </a>
+        </div>
+        <div>
             <span>前置摄像头</span>
-            <input type="file" accept="image/*" capture="user">
-        </label>
-        <label>
+            <a href="javascript:void(0)" class="up-file">
+               <input type="file" accept="image/*" capture="user">拍照
+            </a>
+        </div>
+        <div>
             <span>录像机</span>
-            <input type="file" accept="video/*" capture="camcorder">
-        </label>
-        <label>
+            <a href="javascript:void(0)" class="up-file">
+               <input type="file" accept="image/*" capture="camcorder">录像
+            </a>
+        </div>
+        <div>
             <span>录音机</span>
-            <input type="file" accept="audio/*" capture="microphone">
-        </label>
-        <label>
+            <a href="javascript:void(0)" class="up-file">
+               <input type="file" accept="image/*" capture="microphone">录音
+            </a>
+        </div>
+        <div>
             <span>多媒体</span>
-            <input type="file" accept="image/*" multiple>
-        </label>
+            <a href="javascript:void(0)" class="up-file">
+               <input type="file" accept="image/*" multiple>多媒体
+            </a>
+        </div>
         
     </form>
 </body>
