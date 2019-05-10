@@ -126,7 +126,7 @@ function videoChange() {
     var node = event.target;
     var file = node.files[0];
     var fileSize = (Math.round(file.size / 1024)).toFixed();
-    document.getElementById('info').innerHTML += "所录文件大小约为：" + (fileSize / 1024).toFixed(2) + "Mb";
+    document.getElementById('info').innerHTML = "所录文件大小约为：" + (fileSize / 1024).toFixed(2) + "Mb";
     var url = URL.createObjectURL(file);
     console.log(url);
     document.getElementById("src").innerHTML = url;
